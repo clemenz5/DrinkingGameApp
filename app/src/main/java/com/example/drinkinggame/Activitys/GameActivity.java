@@ -26,28 +26,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		List<Package> packageList = new LinkedList<>();
-		Package testPackage = new Package();
-		testPackage.setName("package1");
-		testPackage.addCard(new Card("penis", 1, CardType.QUESTION));
-		testPackage.addCard(new Card("Ich bin noch nie nackt durch den Wald gerannt.", 2, CardType.QUESTION));
-		testPackage.addCard(new Card("dreier", 3, CardType.QUESTION));
-		testPackage.addCard(new Card("Ich wurde noch nie von Bullen durchsucht", 4, CardType.QUESTION));
-		testPackage.addCard(new Card("Ich hab noch nie jemand vom anderen Geschlecht geküsst", 5, CardType.QUESTION));
-		testPackage.addCard(new Card("sex", 6, CardType.QUESTION));
-		testPackage.addCard(new Card("69", 7, CardType.QUESTION));
-		testPackage.addCard(new Card("Spring vom höchsten Gegenstand in deiner Nähe", 7, CardType.TASK));
 
-		FileTransfer.savePackage(testPackage);
+		List<Package> packageList = getPackages();
+		List<Player> playerList = getPlayers();
+		EndCondition endCondition = getEndCondition();
 
-		packageList.add(FileTransfer.getPackage("package1"));
-
-		List<Player> playerList = new LinkedList<>();
-		playerList.add(new Player("rainer"));
-		playerList.add(new Player("tuunn"));
-		playerList.add(new Player("jj"));
-		playerList.add(new Player("kron"));
-		EndCondition endCondition = new EndCondition(ConditionType.CARDS, 20);
 		game = new Game(packageList, playerList, endCondition);
 
 
@@ -63,6 +46,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 		nextButton.setOnClickListener(this);
 		prevButton.setOnClickListener(this);
 
+	}
+
+	private List<Package> getPackages(){
+		List<Package> retrievedPackages = new LinkedList<>();
+		for(String currentPackageName:getIntent().getExtras().getStringArrayList(GameSettingsActivity.PACKAGE_LIST)){
+			retrievedPackages.add(FileTransfer.getPackage(currentPackageName));
+		}
+		return retrievedPackages;
+	}
+
+	private List<Player> getPlayers(){
+		List<Player> retrievedPlayers = new LinkedList<>();
+		for(String currentPlayerName:getIntent().getExtras().getStringArrayList(PlayerSelectionActivity.PLAYER_LIST)){
+			retrievedPlayers.add(new Player(currentPlayerName));
+		}
+		return retrievedPlayers;
+	}
+
+	private EndCondition getEndCondition(){
+		EndCondition retrievedCondition = new EndCondition(ConditionType.valueOf(getIntent().getExtras().getString(PlayerSelectionActivity.END_CONDITION)), getIntent().getExtras().getDouble(PlayerSelectionActivity.END_CONDITION_AMOUNT));
+		return retrievedCondition;
 	}
 
 	@Override

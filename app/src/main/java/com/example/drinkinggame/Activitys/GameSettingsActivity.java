@@ -25,7 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GameSettingsActivity extends AppCompatActivity {
-	private static final String PACKAGE_LIST = "package_list";
+	public static final String PACKAGE_LIST = "package_list";
 	private Button next;
 	private RecyclerView listView;
 	@Override
