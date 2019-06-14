@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activitys.PackageEditorActivity"></activity>
         <activity
             android:name=".Activitys.PackageManagerActivity"
             android:label="@string/title_activity_package_manager"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activitys.GameActivity" />
         <activity android:name=".Activitys.PlayerSelectionActivity" />
         <activity android:name=".Activitys.GameSettingsActivity" />

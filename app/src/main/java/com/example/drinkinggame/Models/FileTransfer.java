@@ -59,4 +59,10 @@ public class FileTransfer {
 			return false;
 		}
 	}
+
+	public static boolean deletePackage(String name) {
+		File packageFile = new File(MainActivity.PACKAGES_DIR_PATH + "/" + name);
+		return packageFile.delete();
+	}
+
 }

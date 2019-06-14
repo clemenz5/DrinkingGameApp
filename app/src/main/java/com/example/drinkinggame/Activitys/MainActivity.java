@@ -34,17 +34,7 @@ public class MainActivity extends AppCompatActivity {
 		newGameButton = findViewById(R.id.main_menu_new_game);
 		packageButton = findViewById(R.id.main_menu_manage_packages);
 
-		newGameButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, GameSettingsActivity.class));
-			}
-		});
-
-		packageButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-			}
-		});
+		newGameButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, GameSettingsActivity.class)));
+		packageButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, PackageManagerActivity.class)));
 	}
 }
