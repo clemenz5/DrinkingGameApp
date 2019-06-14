@@ -5,9 +5,19 @@ import java.util.List;
 
 public class Package {
 	private List<Card> cards;
+	private String name;
 
-	public Package(List<Card> cards) {
+	public Package(String name, List<Card> cards) {
 		this.cards = cards;
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Package() {

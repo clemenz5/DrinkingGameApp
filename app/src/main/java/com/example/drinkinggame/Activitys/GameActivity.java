@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 		setContentView(R.layout.activity_game);
 		List<Package> packageList = new LinkedList<>();
 		Package testPackage = new Package();
+		testPackage.setName("package1");
 		testPackage.addCard(new Card("penis", 1, CardType.QUESTION));
 		testPackage.addCard(new Card("Ich bin noch nie nackt durch den Wald gerannt.", 2, CardType.QUESTION));
 		testPackage.addCard(new Card("dreier", 3, CardType.QUESTION));
@@ -37,7 +38,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 		testPackage.addCard(new Card("69", 7, CardType.QUESTION));
 		testPackage.addCard(new Card("Spring vom höchsten Gegenstand in deiner Nähe", 7, CardType.TASK));
 
-		packageList.add(testPackage);
+		FileTransfer.savePackage(testPackage);
+
+		packageList.add(FileTransfer.getPackage("package1"));
 
 		List<Player> playerList = new LinkedList<>();
 		playerList.add(new Player("rainer"));
