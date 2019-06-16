@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activitys.PackageEditorActivity"
-    android:background="#198050">
+    android:background="#f1ebeb">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/package_editor_card_list"

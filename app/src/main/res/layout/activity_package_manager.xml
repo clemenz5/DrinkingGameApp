@@ -1,51 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.PackageManagerActivity"
-    android:background="#198050">
+    android:background="#f1ebeb"
+    android:orientation="vertical"
+    tools:context=".Activitys.PackageManagerActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/package_manager_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/package_manager_package_list"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#00000000">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/package_manager_merge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="verschmelzen"
-        android:textSize="16sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/package_manager_delete"
-        android:layout_width="wrap_content"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/package_manager_package_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/package_manager_add_package"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="löschen"
-        android:textSize="16sp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"/>
-</RelativeLayout>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/package_manager_merge"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="verschmelzen"
+            android:textSize="14sp"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+            android:id="@+id/package_manager_delete"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="löschen"
+            android:textSize="14sp"
+            style="@style/Widget.AppCompat.Button.Borderless"/>
+    </LinearLayout>
+</LinearLayout>

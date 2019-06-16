@@ -38,6 +38,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/example/drinkinggame/Activitys/NewCardActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/example/drinkinggame/Activitys/PackageEditorActivity.java">
           <value>
             <set />
@@ -108,6 +113,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_new_card.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_package_editor.xml">
           <value>
             <set />
@@ -129,6 +139,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../incide-android/app/src/main/java/app/incide/android/activities/DailyEditorActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/StudioProjects/incide-android/app/src/main/res/layout/activity_event_screen.xml">
           <value>
             <set />
           </value>

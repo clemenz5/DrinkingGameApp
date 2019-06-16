@@ -1,17 +1,21 @@
 package com.example.drinkinggame.Activitys;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,25 +32,44 @@ public class PackageManagerActivity extends AppCompatActivity {
 	private RecyclerView packageListAdapter;
 	public static final String PACKAGE_NAME = "package_name";
 	private Button mergeButton, deleteButton;
+	AlertDialog.Builder inputDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_package_manager);
 
-		FloatingActionButton fab = findViewById(R.id.package_manager_fab);
+		FloatingActionButton fab = findViewById(R.id.package_manager_add_package);
 		packageListAdapter = findViewById(R.id.package_manager_package_list);
 		mergeButton = findViewById(R.id.package_manager_merge);
 		deleteButton = findViewById(R.id.package_manager_delete);
-
-		fab.setOnClickListener(v -> v.getId());
 
 		PackageAdapter packageAdapter = new PackageAdapter(FileTransfer.getAllPackageNames());
 		packageListAdapter.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
 		packageListAdapter.setAdapter(packageAdapter);
 
+		inputDialog = new AlertDialog.Builder(this);
+		inputDialog.setTitle("Paket Name");
+		final EditText input = new EditText(this);
+
+		inputDialog.setPositiveButton("OK", (dialog, which) -> {
+			FileTransfer.savePackage(new Package(input.getText().toString().trim(), new LinkedList<>()));
+			packageAdapter.setPackageNames(FileTransfer.getAllPackageNames());
+			packageAdapter.notifyDataSetChanged();
+		});
+		inputDialog.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+
+		fab.setOnClickListener(v -> {
+			if (input.getParent() != null) {
+				((ViewGroup) input.getParent()).removeView(input);
+				input.setText("");
+			}
+			inputDialog.setView(input);
+			inputDialog.show();
+		});
+
 		mergeButton.setOnClickListener(v -> {
-			if(!packageAdapter.getSelectedPackagesList().isEmpty()){
+			if (!packageAdapter.getSelectedPackagesList().isEmpty()) {
 				Package mergedPackage = new Package();
 				mergedPackage.setName("mergedPackage" + System.currentTimeMillis());
 				List<Package> mergePackageList = new LinkedList<>();
@@ -72,6 +95,8 @@ public class PackageManagerActivity extends AppCompatActivity {
 			packageAdapter.setPackageNames(FileTransfer.getAllPackageNames());
 			packageAdapter.notifyDataSetChanged();
 		});
+
+
 	}
 
 	class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHolder> {
@@ -154,6 +179,7 @@ public class PackageManagerActivity extends AppCompatActivity {
 				}
 			}
 		}
+
 
 	}
 
