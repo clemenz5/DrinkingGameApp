@@ -2,6 +2,8 @@ package com.example.drinkinggame.Activitys;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +16,8 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.drinkinggame.Models.Card;
+import com.example.drinkinggame.Models.CardType;
 import com.example.drinkinggame.Models.FileTransfer;
 import com.example.drinkinggame.Models.Package;
 import com.example.drinkinggame.R;
@@ -24,20 +28,42 @@ import java.util.List;
 public class PackageEditorActivity extends AppCompatActivity {
 	private RecyclerView recyclerView;
 	private Package currentPackage;
+	private FloatingActionButton addCardButton;
+	boolean change = false;
+	PackageAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_package_editor);
 		Log.d("package_name", getIntent().getExtras().getString(PackageManagerActivity.PACKAGE_NAME));
 		recyclerView = findViewById(R.id.package_editor_card_list);
+		addCardButton = findViewById(R.id.package_editor_add_card);
+		addCardButton.setOnClickListener(view -> startActivityForResult(new Intent(PackageEditorActivity.this, NewCardActivity.class), NewCardActivity.REQUEST_CODE));
 		recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
 		currentPackage = FileTransfer.getPackage(getIntent().getExtras().getString(PackageManagerActivity.PACKAGE_NAME));
 		List<String> cardStrings = new LinkedList<>();
 		currentPackage.getCards().stream().forEach(card -> cardStrings.add(card.getMessage()));
-		recyclerView.setAdapter(new PackageAdapter(cardStrings));
+		adapter = new PackageAdapter(cardStrings);
+		recyclerView.setAdapter(adapter);
 	}
 
+	@Override
+	public void onBackPressed() {
+		FileTransfer.savePackage(currentPackage);
+		finish();
+	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+		if(requestCode == NewCardActivity.REQUEST_CODE){
+			change = true;
+			currentPackage.addCard(new Card(data.getExtras().getString("message"), data.getExtras().getInt("sip"), CardType.valueOf(data.getExtras().getString("type"))));
+			List<String> cardStrings = new LinkedList<>();
+			currentPackage.getCards().stream().forEach(card -> cardStrings.add(card.getMessage()));
+			adapter.setMessages(cardStrings);
+			adapter.notifyDataSetChanged();
+		}
+	}
 
 	class PackageAdapter extends RecyclerView.Adapter<PackageEditorActivity.ViewHolder> {
 		private List<String> packageNames;
@@ -63,6 +89,11 @@ public class PackageEditorActivity extends AppCompatActivity {
 		@Override
 		public int getItemCount() {
 			return packageNames.size();
+		}
+
+
+		public void setMessages(List<String> packageNames) {
+			this.packageNames = packageNames;
 		}
 	}
 

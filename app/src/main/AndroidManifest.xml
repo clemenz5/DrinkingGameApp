@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/app_background"
+        android:icon="@drawable/app_icon_beer"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/app_background"
+        android:roundIcon="@drawable/app_icon_beer"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activitys.NewCardActivity"></activity>

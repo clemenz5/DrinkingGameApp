@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.MainActivity"
+    android:background="#f1ebeb"
     android:orientation="vertical"
-    android:background="#f1ebeb">
+    android:theme="@style/AppTheme.AppBarOverlay"
+    tools:context=".Activitys.MainActivity">
+
     <ImageView
-        android:layout_weight="1"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:src="@drawable/app_background"
-        android:layout_gravity="center"/>
+        android:id="@+id/main_menu_new_game"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_weight="5"
+        android:src="@drawable/app_icon_beer_transparent" />
 
-    <LinearLayout
+
+    <Button
         android:layout_weight="1"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_menu_manage_packages"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="30dp"
-        android:layout_gravity="center">
-        <Button
-            android:id="@+id/main_menu_new_game"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="50dp"
-            android:text="neues Spiel"
-            android:textSize="30sp"
-            android:background="#00000000"/>
+        android:layout_gravity="center"
+        android:background="#00000000"
+        android:shadowColor="@color/colorPrimary"
+        android:text="pakete managen"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/main_menu_manage_packages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="pakete managen"
-            android:textSize="30sp"
-            android:background="#00000000"
-            android:shadowColor="@color/colorPrimary"/>
-    </LinearLayout>
 
 </LinearLayout>

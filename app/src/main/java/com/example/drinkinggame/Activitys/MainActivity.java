@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.drinkinggame.Models.Card;
@@ -23,7 +25,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-	private Button newGameButton, packageButton;
+	private Button packageButton;
+	private ImageView newGameButton;
 	public final static String PACKAGES_DIR_PATH = "/storage/emulated/0/DrinkingGamePackages";
 	private boolean readAccess;
 	private boolean writeAccess;
