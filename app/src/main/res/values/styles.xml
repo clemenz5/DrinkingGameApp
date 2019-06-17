@@ -19,6 +19,19 @@
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
+    <style name="Round_Button_Frame_Gold">
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">@drawable/custom_round_button_background</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:text">"+"</item>
+    </style>
+
+    <style name="TextViewFontColor">
+        <item name="android:textColor">#000000</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
     <style name="Montserrat_Font">
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>

@@ -11,6 +11,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:layout_weight="1">
 
         <LinearLayout
@@ -24,13 +25,13 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000" />
 
-            <android.support.design.widget.FloatingActionButton
+            <Button
                 android:id="@+id/package_editor_add_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
-                app:elevation="0dp"
-                app:srcCompat="@android:drawable/ic_input_add" />
+                android:layout_marginTop="5dp"
+                style="@style/Round_Button_Frame_Gold"/>
 
         </LinearLayout>
 

@@ -11,6 +11,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:layout_weight="1">
 
         <LinearLayout
@@ -21,16 +22,15 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/package_manager_package_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="#00000000" />
 
-            <android.support.design.widget.FloatingActionButton
+            <Button
                 android:id="@+id/package_manager_add_package"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
-                app:elevation="0dp"
-                app:srcCompat="@android:drawable/ic_input_add" />
+                style="@style/Round_Button_Frame_Gold" />
 
         </LinearLayout>
 
@@ -52,9 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="verschmelzen"
                 android:textSize="14sp" />
@@ -71,9 +71,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="löschen"
                 android:textSize="14sp" />

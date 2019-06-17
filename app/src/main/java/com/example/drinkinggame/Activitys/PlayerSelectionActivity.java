@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.drinkinggame.Models.ConditionType;
 import com.example.drinkinggame.R;
 
 import java.util.ArrayList;
@@ -27,10 +26,8 @@ import java.util.List;
 
 public class PlayerSelectionActivity extends AppCompatActivity {
 	public static final String PLAYER_LIST = "player_list";
-	public static final String END_CONDITION = "end_condition";
-	public static final String END_CONDITION_AMOUNT = "end_condition_amount";
 	private Button nextButton;
-	private FloatingActionButton addPlayerButton;
+	private Button addPlayerButton;
 	private ArrayList<String> playerNameList;
 	private AlertDialog.Builder inputDialog;
 	private RecyclerView playerRecyclerView;
@@ -80,8 +77,6 @@ public class PlayerSelectionActivity extends AppCompatActivity {
 			Bundle bundle = new Bundle();
 			bundle.putStringArrayList(GameSettingsActivity.PACKAGE_LIST, getIntent().getExtras().getStringArrayList(GameSettingsActivity.PACKAGE_LIST));
 			bundle.putStringArrayList(PLAYER_LIST, playerNameList);
-			bundle.putString(END_CONDITION, ConditionType.CARDS.toString());
-			bundle.putDouble(END_CONDITION_AMOUNT, 16);
 			intent.putExtras(bundle);
 			startActivity(intent);
 			finish();

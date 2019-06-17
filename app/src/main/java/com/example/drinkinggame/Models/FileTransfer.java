@@ -6,9 +6,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -63,6 +65,24 @@ public class FileTransfer {
 	public static boolean deletePackage(String name) {
 		File packageFile = new File(MainActivity.PACKAGES_DIR_PATH + "/" + name);
 		return packageFile.delete();
+	}
+
+	public static boolean saveCardToPackage(String packageName, Card card) {
+		File packageFile = new File(MainActivity.PACKAGES_DIR_PATH + "/" + packageName);
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream(packageFile, true);
+			//BufferedWriter writer = new BufferedWriter(new FileWriter(packageFile), true);
+			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream);
+			BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+			bufferedWriter.write(card.toString());
+			bufferedWriter.newLine();
+			bufferedWriter.flush();
+			bufferedWriter.close();
+			return true;
+		} catch (IOException e) {
+			return false;
+		}
 	}
 
 }

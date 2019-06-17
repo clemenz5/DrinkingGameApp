@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class PackageManagerActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_package_manager);
 
-		FloatingActionButton fab = findViewById(R.id.package_manager_add_package);
+		Button fab = findViewById(R.id.package_manager_add_package);
 		packageListAdapter = findViewById(R.id.package_manager_package_list);
 		mergeButton = findViewById(R.id.package_manager_merge);
 		deleteButton = findViewById(R.id.package_manager_delete);
@@ -179,9 +180,5 @@ public class PackageManagerActivity extends AppCompatActivity {
 				}
 			}
 		}
-
-
 	}
-
-
 }

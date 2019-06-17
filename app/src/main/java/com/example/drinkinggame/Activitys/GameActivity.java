@@ -29,9 +29,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 		List<Package> packageList = getPackages();
 		List<Player> playerList = getPlayers();
-		EndCondition endCondition = getEndCondition();
 
-		game = new Game(packageList, playerList, endCondition);
+		game = new Game(packageList, playerList);
 
 
 		nextButton = findViewById(R.id.game_next_button);
@@ -67,11 +66,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 			retrievedPlayers.add(new Player(currentPlayerName));
 		}
 		return retrievedPlayers;
-	}
-
-	private EndCondition getEndCondition(){
-		EndCondition retrievedCondition = new EndCondition(ConditionType.valueOf(getIntent().getExtras().getString(PlayerSelectionActivity.END_CONDITION)), getIntent().getExtras().getDouble(PlayerSelectionActivity.END_CONDITION_AMOUNT));
-		return retrievedCondition;
 	}
 
 	@Override

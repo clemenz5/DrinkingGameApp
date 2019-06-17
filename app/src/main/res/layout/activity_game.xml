@@ -15,7 +15,8 @@
         android:layout_marginTop="10dp"
         android:textSize="20sp"
         android:layout_gravity="center"
-        android:text="Spieler"/>
+        android:text="Spieler"
+        style="@style/TextViewFontColor"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -41,7 +42,8 @@
                 android:textSize="25sp"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="Statement:" />
+                android:text="Statement:"
+                style="@style/TextViewFontColor"/>
             <TextView
                 android:id="@+id/game_question"
                 android:layout_width="wrap_content"
@@ -49,7 +51,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textSize="25sp"
-                android:textColor="#000000"
+                style="@style/TextViewFontColor"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:text="Frage" />
@@ -79,7 +81,7 @@
                 android:gravity="center"
                 android:textSize="40sp"
                 android:text="3"
-                android:textColor="#000000" />
+                style="@style/TextViewFontColor"/>
 
             <TextView
                 android:layout_width="150dp"
@@ -87,7 +89,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textSize="25sp"
-                android:text="Schlücke" />
+                android:text="Schlücke"
+                style="@style/TextViewFontColor"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -106,7 +109,8 @@
             android:text="letztes"
             android:layout_marginStart="10dp"
             android:textColor="#000000"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:fontFamily="@font/montserrat_medium"/>
         <Button
             android:id="@+id/game_next_button"
             android:layout_width="wrap_content"
@@ -114,7 +118,8 @@
             android:text="nächstes"
             android:layout_marginEnd="10dp"
             android:textColor="#000000"
-            style="@style/Widget.AppCompat.Button.Borderless"/>
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:fontFamily="@font/montserrat_medium"/>
     </LinearLayout>
 
 

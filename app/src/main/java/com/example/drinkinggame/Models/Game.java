@@ -9,12 +9,10 @@ public class Game {
 	private List<Card> unseenCards;
 	private List<Card> allCards;
 	private List<Player> players;
-	private EndCondition endCondition;
 	private int currentCardIndex = -1;
 	private int currentPlayerIndex = -1;
 
-	public Game(List<Package> packages, List<Player> players, EndCondition endCondition) {
-		this.endCondition = endCondition;
+	public Game(List<Package> packages, List<Player> players) {
 		this.packages = packages;
 		this.players = players;
 		unseenCards = new LinkedList<>();

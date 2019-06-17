@@ -13,7 +13,7 @@
         android:text="Wähle deine Pakete:"
         android:layout_margin="10dp"
         android:textSize="20sp"
-        style="@style/Montserrat_Font"/>
+        style="@style/TextViewFontColor"/>
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/game_settings_packages_list"
