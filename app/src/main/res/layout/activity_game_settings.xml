@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:text="Wähle deine Pakete:"
         android:layout_margin="10dp"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        style="@style/Montserrat_Font"/>
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/game_settings_packages_list"
@@ -22,7 +23,8 @@
        android:layout_marginEnd="10dp"
        android:layout_marginBottom="5dp"
        android:layout_marginTop="10dp"
-       android:layout_weight="1">
+       android:layout_weight="1"
+       style="@style/Montserrat_Font">
    </android.support.v7.widget.RecyclerView>
 
     <Button
