@@ -19,7 +19,7 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 	private Button nextButton, prevButton;
-	private TextView playerText, cardText;
+	private TextView playerText, cardText, sipText, typeText;
 	private Game game;
 
 	@Override
@@ -38,9 +38,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 		prevButton = findViewById(R.id.game_prev_button);
 		playerText = findViewById(R.id.game_player);
 		cardText = findViewById(R.id.game_question);
+		sipText = findViewById(R.id.game_sips);
+		typeText = findViewById(R.id.game_type);
 
 
-		cardText.setText(game.nextCard().getMessage());
+		Card firstCard = game.nextCard();
+		cardText.setText(firstCard.getMessage());
+		sipText.setText(String.valueOf(firstCard.getSip()));
+		typeText.setText(firstCard.getType().toString());
 		playerText.setText(game.nextPlayer().getName());
 
 		nextButton.setOnClickListener(this);
@@ -73,11 +78,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 	public void onClick(View v) {
 		switch (v.getId()){
 			case R.id.game_next_button:
-				cardText.setText(game.nextCard().getMessage());
+				Card nextCard = game.nextCard();
+				cardText.setText(nextCard.getMessage());
+				sipText.setText(String.valueOf(nextCard.getSip()));
+				typeText.setText(nextCard.getType().toString());
 				playerText.setText(game.nextPlayer().getName());
 				break;
 			case R.id.game_prev_button:
-				cardText.setText(game.prevCard().getMessage());
+				Card prevCard = game.prevCard();
+				cardText.setText(prevCard.getMessage());
+				sipText.setText(String.valueOf(prevCard.getSip()));
+				typeText.setText(prevCard.getType().toString());
 				playerText.setText(game.prevPlayer().getName());
 				break;
 

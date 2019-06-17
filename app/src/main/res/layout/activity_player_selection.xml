@@ -4,74 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activitys.MainActivity"
+    android:background="#f1ebeb"
     android:orientation="vertical"
-    android:background="#f1ebeb">
+    tools:context=".Activitys.MainActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Füge Spieler hinzu:"
         android:layout_margin="10dp"
+        android:text="Füge Spieler hinzu:"
         android:textSize="20sp" />
-    <ListView
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp">
-    </ListView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="5dp"
-            android:layout_gravity="center"/>
-        <Button
+        android:layout_height="250dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#00000000"
-            android:layout_weight="3"
-            android:layout_gravity="center"
-            android:text="hinzufügen" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/player_selection_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/player_selection_add_player"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@android:drawable/ic_input_add" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Zeit:"
                 android:layout_weight="1"
-                android:gravity="start"/>
+                android:gravity="start"
+                android:text="Zeit:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:background="#00000000"
-                android:text="13:50"/>
+                android:gravity="center"
+                android:text="13:50" />
 
             <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -79,55 +84,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Runden:"
                 android:layout_weight="1"
-                android:gravity="start"/>
+                android:gravity="start"
+                android:text="Runden:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:background="#00000000"
-                android:text="5"/>
+                android:gravity="center"
+                android:text="5" />
 
             <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Runden:"
                 android:layout_weight="1"
-                android:gravity="start"/>
+                android:gravity="start"
+                android:text="Runden:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:background="#00000000"
-                android:text="5"/>
+                android:gravity="center"
+                android:text="5" />
 
             <Switch
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -136,11 +144,11 @@
 
     <Button
         android:id="@+id/player_selection_next"
+        style="@style/Button_Frame_Gold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#00000000"
         android:text="weiter" />
 </LinearLayout>

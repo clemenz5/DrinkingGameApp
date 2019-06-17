@@ -55,13 +55,15 @@ public class PackageEditorActivity extends AppCompatActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-		if(requestCode == NewCardActivity.REQUEST_CODE){
-			change = true;
-			currentPackage.addCard(new Card(data.getExtras().getString("message"), data.getExtras().getInt("sip"), CardType.valueOf(data.getExtras().getString("type"))));
-			List<String> cardStrings = new LinkedList<>();
-			currentPackage.getCards().stream().forEach(card -> cardStrings.add(card.getMessage()));
-			adapter.setMessages(cardStrings);
-			adapter.notifyDataSetChanged();
+		if(resultCode == RESULT_OK){
+			if(requestCode == NewCardActivity.REQUEST_CODE){
+				change = true;
+				currentPackage.addCard(new Card(data.getExtras().getString("message"), data.getExtras().getInt("sip"), CardType.valueOf(data.getExtras().getString("type"))));
+				List<String> cardStrings = new LinkedList<>();
+				currentPackage.getCards().stream().forEach(card -> cardStrings.add(card.getMessage()));
+				adapter.setMessages(cardStrings);
+				adapter.notifyDataSetChanged();
+			}
 		}
 	}
 

@@ -32,6 +32,6 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_gravity="end"
-        android:background="#00000000"
+        style="@style/Button_Frame_Gold"
         android:text="weiter" />
     </LinearLayout>
