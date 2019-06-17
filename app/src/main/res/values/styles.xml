@@ -19,7 +19,6 @@
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
-
     <style name="Montserrat_Font">
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>

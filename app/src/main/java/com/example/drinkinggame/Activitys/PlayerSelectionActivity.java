@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.drinkinggame.Models.ConditionType;
 import com.example.drinkinggame.R;
@@ -52,6 +53,10 @@ public class PlayerSelectionActivity extends AppCompatActivity {
 		final EditText input = new EditText(this);
 
 		inputDialog.setPositiveButton("OK", (dialog, which) -> {
+			if(input.getText().toString().trim().isEmpty()){
+				Toast.makeText(this, "kein valider Spielername", Toast.LENGTH_LONG).show();
+				return;
+			}
 			playerNameList.add(input.getText().toString().trim());
 			playerAdapter.setPlayerNames(playerNameList);
 			playerAdapter.notifyDataSetChanged();
@@ -67,6 +72,10 @@ public class PlayerSelectionActivity extends AppCompatActivity {
 			inputDialog.show();
 		});
 		nextButton.setOnClickListener(v -> {
+			if(playerNameList.isEmpty()){
+				Toast.makeText(this, "füge mindestens einen Spieler hinzu", Toast.LENGTH_LONG).show();
+				return;
+			}
 			Intent intent = new Intent(PlayerSelectionActivity.this, GameActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putStringArrayList(GameSettingsActivity.PACKAGE_LIST, getIntent().getExtras().getStringArrayList(GameSettingsActivity.PACKAGE_LIST));

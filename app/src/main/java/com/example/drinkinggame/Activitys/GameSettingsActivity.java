@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.drinkinggame.Models.FileTransfer;
 import com.example.drinkinggame.Models.Game;
@@ -23,6 +24,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import static com.example.drinkinggame.Activitys.PackageManagerActivity.PACKAGE_NAME;
 
 public class GameSettingsActivity extends AppCompatActivity {
 	public static final String PACKAGE_LIST = "package_list";
@@ -40,6 +43,10 @@ public class GameSettingsActivity extends AppCompatActivity {
 		PackageAdapter packageAdapter = new PackageAdapter(FileTransfer.getAllPackageNames());
 		listView.setAdapter(packageAdapter);
 		next.setOnClickListener(v -> {
+			if(packageAdapter.getSelectedPackagesList().isEmpty()){
+				Toast.makeText(this, "wähle mindestens ein Paket aus", Toast.LENGTH_LONG).show();
+				return;
+			}
 			Intent intent = new Intent(GameSettingsActivity.this, PlayerSelectionActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putStringArrayList(PACKAGE_LIST, new ArrayList<>(packageAdapter.getSelectedPackagesList()));
@@ -106,6 +113,11 @@ public class GameSettingsActivity extends AppCompatActivity {
 				});
 
 				nameView.setOnClickListener(v -> {
+					Bundle bundle = new Bundle();
+					bundle.putString(PACKAGE_NAME, nameView.getText().toString());
+					Intent intent = new Intent(GameSettingsActivity.this, PackageEditorActivity.class);
+					intent.putExtras(bundle);
+					startActivity(intent);
 				});
 			}
 
