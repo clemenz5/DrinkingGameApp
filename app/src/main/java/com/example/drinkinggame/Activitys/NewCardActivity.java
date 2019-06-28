@@ -8,11 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.drinkinggame.R;
 
 public class NewCardActivity extends AppCompatActivity {
 	public static final int REQUEST_CODE = 7583;
+	private TextView sipInfo, typeInfo;
 	private EditText messageInput, sipInput;
 	private Spinner typeSpinner;
 	private Button saveBtn;
@@ -24,9 +27,14 @@ public class NewCardActivity extends AppCompatActivity {
 		sipInput = findViewById(R.id.new_card_sip);
 		typeSpinner = findViewById(R.id.new_card_type);
 		saveBtn = findViewById(R.id.new_card_save);
+		sipInfo = findViewById(R.id.new_card_sips_info_text);
+		typeInfo = findViewById(R.id.new_card_type_info);
+
+		sipInfo.setOnClickListener(v -> Toast.makeText(this,"das ist die Anzahl der Schlücke die bei dieser Karte getrunken werden müssen", Toast.LENGTH_LONG).show());
+		typeInfo.setOnClickListener(v -> Toast.makeText(this,"das ist der Typ der Karte", Toast.LENGTH_LONG).show());
 
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, new String[]{"QUESTION","STATEMENT", "TASK"});
+		ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"QUESTION","STATEMENT", "TASK"});
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		typeSpinner.setAdapter(adapter);
 		saveBtn.setOnClickListener(view -> {

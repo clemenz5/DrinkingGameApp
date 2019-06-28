@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.drinkinggame.Models.*;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 	private Button nextButton, prevButton;
-	private TextView playerText, cardText, sipText, typeText;
+	private TextView playerText, cardText, sipText, typeText, sipInfo;
 	private Game game;
 
 	@Override
@@ -39,8 +40,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 		cardText = findViewById(R.id.game_question);
 		sipText = findViewById(R.id.game_sips);
 		typeText = findViewById(R.id.game_type);
+		sipInfo = findViewById(R.id.game_sips_info);
 
 
+		typeText.setOnClickListener(this);
+		sipInfo.setOnClickListener(this);
+		sipText.setOnClickListener(this);
 		Card firstCard = game.nextCard();
 		cardText.setText(firstCard.getMessage());
 		sipText.setText(String.valueOf(firstCard.getSip()));
@@ -52,17 +57,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 	}
 
-	private List<Package> getPackages(){
+	private List<Package> getPackages() {
 		List<Package> retrievedPackages = new LinkedList<>();
-		for(String currentPackageName:getIntent().getExtras().getStringArrayList(GameSettingsActivity.PACKAGE_LIST)){
+		for (String currentPackageName : getIntent().getExtras().getStringArrayList(GameSettingsActivity.PACKAGE_LIST)) {
 			retrievedPackages.add(FileTransfer.getPackage(currentPackageName));
 		}
 		return retrievedPackages;
 	}
 
-	private List<Player> getPlayers(){
+	private List<Player> getPlayers() {
 		List<Player> retrievedPlayers = new LinkedList<>();
-		for(String currentPlayerName:getIntent().getExtras().getStringArrayList(PlayerSelectionActivity.PLAYER_LIST)){
+		for (String currentPlayerName : getIntent().getExtras().getStringArrayList(PlayerSelectionActivity.PLAYER_LIST)) {
 			retrievedPlayers.add(new Player(currentPlayerName));
 		}
 		return retrievedPlayers;
@@ -70,7 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()){
+		switch (v.getId()) {
 			case R.id.game_next_button:
 				Card nextCard = game.nextCard();
 				cardText.setText(nextCard.getMessage());
@@ -85,7 +90,23 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 				typeText.setText(prevCard.getType().toString());
 				playerText.setText(game.prevPlayer().getName());
 				break;
-
+			case R.id.game_sips:
+			case R.id.game_sips_info:
+				Toast.makeText(this, "so viel wird getrunken!", Toast.LENGTH_LONG).show();
+				break;
+			case R.id.game_type:
+				switch (typeText.getText().toString()) {
+					case "QUESTION":
+						Toast.makeText(this, "Wenn du die Frage beantwortest, darfst du verteilen, sonst selbst trinken", Toast.LENGTH_LONG).show();
+						break;
+					case "STATEMENT":
+						Toast.makeText(this, "Die anderen müssen raten, ob dieses Statement auf die zutrifft. Wer richtig liegt darf verteilen, der Rest trinkt selbst", Toast.LENGTH_LONG).show();
+						break;
+					case "TASK":
+						Toast.makeText(this, "Wenn du die Aufgabe erfüllst, darfst du verteilen, sonst selbst trinken", Toast.LENGTH_LONG).show();
+						break;
+				}
+				break;
 		}
 	}
 }

@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:background="#00000000"
-                android:hint="ERSTELLE DEINE EIGNEN KARTE"
+                android:hint="ERSTELLE DEINE EIGENE KARTE"
                 android:textSize="20sp"
                 android:maxLines="10"
                 android:inputType="textMultiLine"
@@ -38,6 +38,7 @@
             android:layout_gravity="center">
 
             <TextView
+                android:id="@+id/new_card_sips_info_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SCHLÜCKE:"
@@ -58,6 +59,7 @@
             android:layout_gravity="center">
 
             <TextView
+                android:id="@+id/new_card_type_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="KATEGORIE:"
