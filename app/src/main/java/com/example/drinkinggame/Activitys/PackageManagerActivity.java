@@ -130,7 +130,11 @@ public class PackageManagerActivity extends AppCompatActivity {
 		@Override
 		public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 			viewHolder.setName(packageNames.get(i));
-			viewHolder.setChecked(false);
+			if(selectedPackagesList.contains(packageNames.get(i))){
+				viewHolder.setChecked(true);
+			}else{
+				viewHolder.setChecked(false);
+			}
 		}
 
 		@Override

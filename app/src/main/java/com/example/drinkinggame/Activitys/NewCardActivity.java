@@ -37,6 +37,24 @@ public class NewCardActivity extends AppCompatActivity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"QUESTION","STATEMENT", "TASK"});
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		typeSpinner.setAdapter(adapter);
+
+		if(getIntent().getExtras() != null){
+			messageInput.setText(getIntent().getExtras().getString("message"));
+			sipInput.setText(String.valueOf(getIntent().getExtras().getInt("sip")));
+			switch(getIntent().getExtras().getString("type")){
+				case "QUESTION":
+					typeSpinner.setSelection(0);
+					break;
+				case "STATEMENT":
+					typeSpinner.setSelection(1);
+					break;
+				case "TASK":
+					typeSpinner.setSelection(2);
+					break;
+
+			}
+		}
+
 		saveBtn.setOnClickListener(view -> {
 			if(messageInput.getText().toString().trim().isEmpty()){
 				return;
@@ -49,6 +67,11 @@ public class NewCardActivity extends AppCompatActivity {
 			extraBundle.putString("message", messageInput.getText().toString().trim());
 			extraBundle.putInt("sip", Integer.valueOf(sipInput.getText().toString().trim()));
 			extraBundle.putString("type", (String)typeSpinner.getSelectedItem());
+			if(getIntent().getExtras() != null){
+				extraBundle.putBoolean("change", true);
+			}else{
+				extraBundle.putBoolean("change", false);
+			}
 			intent.putExtras(extraBundle);
 			setResult(RESULT_OK, intent);
 			finish();
