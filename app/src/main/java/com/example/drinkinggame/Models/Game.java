@@ -23,6 +23,7 @@ public class Game {
 			allCards.addAll(currentPackage.getCards());
 		}
 
+		shuffleList(allCards);
 		seenCards = new LinkedList<>();
 	}
 
@@ -100,4 +101,9 @@ public class Game {
 		}
 	}
 
+	private void shuffleList(List sortedList){
+		for(int i = 0; i<500; i++){
+			sortedList.add(sortedList.remove((int)(Math.random()*sortedList.size())));
+		}
+	}
 }
